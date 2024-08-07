@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   var initialRoute = await Routes.initialRoute;
   runApp(Main(initialRoute));
 }
