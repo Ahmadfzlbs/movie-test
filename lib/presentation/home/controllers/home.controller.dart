@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:tes_kerja/models/now_playing.dart';
 
 class HomeController extends GetxController {
+  var api = 'api.themoviedb.org';
   var nowPlaying = Rx<NowPlaying?>(null);
   var popularMovie = Rx<NowPlaying?>(null);
 
@@ -16,7 +17,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> fetchNowPlaying() async {
-    var url = Uri.https('api.themoviedb.org', '/3/movie/now_playing');
+    var url = Uri.https(api, '/3/movie/now_playing');
 
     var headers = {
       'Authorization':
@@ -29,12 +30,12 @@ class HomeController extends GetxController {
       var jsonResponse = json.decode(response.body);
       nowPlaying.value = NowPlaying.fromJson(jsonResponse);
     } else {
-      print('Failed to load now playing movies');
+      Get.snackbar("Error", "Failed fetch data");
     }
   }
 
   Future<void> fetchPopular() async {
-    var url = Uri.https('api.themoviedb.org', '/3/movie/popular');
+    var url = Uri.https(api, '/3/movie/popular');
 
     var headers = {
       'Authorization':
@@ -46,9 +47,8 @@ class HomeController extends GetxController {
     if (response.statusCode == 200) {
       var jsonResponse = json.decode(response.body);
       popularMovie.value = NowPlaying.fromJson(jsonResponse);
-      print(jsonResponse);
     } else {
-      print('Failed to load now playing movies');
+      Get.snackbar("Error", "Failed fetch data");
     }
   }
 }
