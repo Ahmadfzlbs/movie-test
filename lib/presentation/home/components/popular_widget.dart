@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tes_kerja/constants.dart';
+import 'package:movie_app/constants.dart';
 
 class PopularWidget extends StatelessWidget {
   final List<dynamic> movies;
@@ -26,7 +26,7 @@ class PopularWidget extends StatelessWidget {
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
             TextButton(
-              onPressed: (){},
+              onPressed: () {},
               child: const Text(
                 "See All",
                 style: TextStyle(color: orangeColor),
@@ -37,7 +37,8 @@ class PopularWidget extends StatelessWidget {
         SizedBox(
           height: 200,
           child: ListView.builder(
-            itemCount: movies.length > maxItemCount ? maxItemCount : movies.length,
+            itemCount:
+                movies.length > maxItemCount ? maxItemCount : movies.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Padding(

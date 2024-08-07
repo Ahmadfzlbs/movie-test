@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tes_kerja/constants.dart';
-
+import 'package:movie_app/constants.dart';
 
 class NowPlayingWidget extends StatelessWidget {
-  final List<dynamic> movies; 
+  final List<dynamic> movies;
   final String imageBaseUrl;
 
   const NowPlayingWidget({
@@ -38,7 +37,8 @@ class NowPlayingWidget extends StatelessWidget {
         SizedBox(
           height: 200,
           child: ListView.builder(
-            itemCount: movies.length > maxItemCount ? maxItemCount : movies.length,
+            itemCount:
+                movies.length > maxItemCount ? maxItemCount : movies.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Padding(
