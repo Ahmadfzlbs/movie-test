@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tes_kerja/constants.dart';
 import 'package:tes_kerja/presentation/detail_movie/components/similar_movies_widget.dart';
-
-import '../../infrastructure/navigation/routes.dart';
 import 'controllers/detail_movie.controller.dart';
 
 class DetailMovieScreen extends GetView<DetailMovieController> {

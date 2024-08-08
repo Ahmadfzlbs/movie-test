@@ -4,7 +4,6 @@ import 'package:tes_kerja/constants.dart';
 import 'package:tes_kerja/infrastructure/navigation/routes.dart';
 import 'package:tes_kerja/presentation/home/components/now_playing_movies_widget.dart';
 import 'package:tes_kerja/presentation/home/components/popular_movies_widget.dart';
-
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -29,8 +28,7 @@ class HomeScreen extends GetView<HomeController> {
         ),
       ),
       body: Obx(() {
-        if (controller.nowPlaying.value == null ||
-            controller.popularMovie.value == null) {
+        if (controller.nowPlaying.value == null || controller.popularMovie.value == null) {
           return const Center(child: CircularProgressIndicator());
         }
 
@@ -46,70 +44,10 @@ class HomeScreen extends GetView<HomeController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                            color: blueColor.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset("assets/images/movie.png"),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const Text("Movies")
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                            color: redColor.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset("assets/images/popcorn.png"),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const Text("Food")
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                            color: yellowColor.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset("assets/images/ticket.png"),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const Text("Ticket")
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                            color: purpleColor.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset("assets/images/chair.png"),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const Text("Booking")
-                    ],
-                  ),
+                  _buildCategoryItem("Movies", "assets/images/movie.png", blueColor),
+                  _buildCategoryItem("Food", "assets/images/popcorn.png", redColor),
+                  _buildCategoryItem("Ticket", "assets/images/ticket.png", yellowColor),
+                  _buildCategoryItem("Booking", "assets/images/chair.png", purpleColor),
                 ],
               ),
             ),
@@ -126,6 +64,23 @@ class HomeScreen extends GetView<HomeController> {
           ],
         );
       }),
+    );
+  }
+
+  Widget _buildCategoryItem(String title, String imagePath, Color color) {
+    return Column(
+      children: [
+        Container(
+          height: 70,
+          width: 70,
+          decoration: BoxDecoration(
+              color: color.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(10)),
+          child: Image.asset(imagePath),
+        ),
+        const SizedBox(height: 5),
+        Text(title),
+      ],
     );
   }
 }
