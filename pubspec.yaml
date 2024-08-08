@@ -6,12 +6,14 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
+  connectivity_plus: ^6.0.4
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
   get: 4.6.6
   http: ^1.2.2
   flutter_dotenv: ^5.1.0
+  shared_preferences: ^2.3.1
 
 dev_dependencies:
   flutter_lints: 4.0.0
@@ -21,5 +23,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   - .env
-   - assets/images/
+    - .env
+    - assets/images/

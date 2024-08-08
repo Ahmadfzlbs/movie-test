@@ -8,6 +8,7 @@ import 'infrastructure/navigation/routes.dart';
 void main() async {
   await dotenv.load(fileName: ".env");
   var initialRoute = await Routes.initialRoute;
+  WidgetsFlutterBinding.ensureInitialized();
   Get.put(DetailMovieController());
   runApp(Main(initialRoute));
 }
