@@ -1,1 +1,2 @@
+export 'package:tes_kerja/infrastructure/navigation/bindings/controllers/detail_movie.controller.binding.dart'; 
 export 'package:tes_kerja/infrastructure/navigation/bindings/controllers/home.controller.binding.dart'; 

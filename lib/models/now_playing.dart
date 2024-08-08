@@ -7,7 +7,6 @@ class NowPlaying {
     required this.results,
   });
 
-  // Method to parse JSON to NowPlaying object
   factory NowPlaying.fromJson(Map<String, dynamic> json) {
     var list = json['results'] as List;
     List<Result> resultList = list.map((i) => Result.fromJson(i)).toList();

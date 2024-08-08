@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tes_kerja/presentation/home/components/now_playing_widget.dart';
-import 'package:tes_kerja/presentation/home/components/popular_widget.dart';
+import 'package:tes_kerja/constants.dart';
+import 'package:tes_kerja/infrastructure/navigation/routes.dart';
+import 'package:tes_kerja/presentation/home/components/now_playing_movies_widget.dart';
+import 'package:tes_kerja/presentation/home/components/popular_movies_widget.dart';
 
-import '../../constants.dart';
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -18,16 +19,14 @@ class HomeScreen extends GetView<HomeController> {
             onPressed: () {},
             icon: const Icon(
               Icons.person,
-              color: whiteColor,
             ),
           ),
         ],
-        backgroundColor: blackColor,
+        backgroundColor: whiteColor,
         title: const Text(
-          'Home',
-          style: TextStyle(color: whiteColor, fontSize: 18),
+          'e-Tix',
+          style: TextStyle(fontSize: 30),
         ),
-        centerTitle: true,
       ),
       body: Obx(() {
         if (controller.nowPlaying.value == null ||
@@ -41,13 +40,88 @@ class HomeScreen extends GetView<HomeController> {
 
         return ListView(
           physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 10),
           children: [
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            color: blueColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset("assets/images/movie.png"),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text("Movies")
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            color: redColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset("assets/images/popcorn.png"),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text("Food")
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            color: yellowColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset("assets/images/ticket.png"),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text("Ticket")
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            color: purpleColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset("assets/images/chair.png"),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text("Booking")
+                    ],
+                  ),
+                ],
+              ),
+            ),
             NowPlayingWidget(
-                movies: nowPlayingMovies, imageBaseUrl: imageBaseUrl),
+              movies: nowPlayingMovies,
+              imageBaseUrl: imageBaseUrl,
+              onTap: (id) => Get.toNamed(Routes.DETAIL_MOVIE, arguments: id),
+            ),
             PopularWidget(
               movies: popularMovies,
               imageBaseUrl: imageBaseUrl,
+              onTap: (id) => Get.toNamed(Routes.DETAIL_MOVIE, arguments: id),
             ),
           ],
         );

@@ -4,16 +4,17 @@ import 'package:tes_kerja/constants.dart';
 class PopularWidget extends StatelessWidget {
   final List<dynamic> movies;
   final String imageBaseUrl;
+  final Function(String) onTap;
 
-  const PopularWidget({
-    super.key,
-    required this.movies,
-    required this.imageBaseUrl,
-  });
+  const PopularWidget(
+      {super.key,
+      required this.movies,
+      required this.imageBaseUrl,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    const int maxItemCount = 6;
+    const int maxItemCount = 20;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,12 +22,15 @@ class PopularWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Popular",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                "Popular",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
             TextButton(
-              onPressed: (){},
+              onPressed: () {},
               child: const Text(
                 "See All",
                 style: TextStyle(color: orangeColor),
@@ -35,37 +39,42 @@ class PopularWidget extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 200,
+          height: 300,
           child: ListView.builder(
-            itemCount: movies.length > maxItemCount ? maxItemCount : movies.length,
+            itemCount:
+                movies.length > maxItemCount ? maxItemCount : movies.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      color: whiteColor,
-                      height: 150,
-                      width: 100,
-                      child: Image.network(
-                        '$imageBaseUrl${movies[index].posterPath}',
-                        fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () => onTap(movies[index].id.toString()),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        color: whiteColor,
+                        height: 250,
+                        width: 150,
+                        child: Image.network(
+                          '$imageBaseUrl${movies[index].posterPath}',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 10),
                   SizedBox(
-                    width: 100,
+                    width: 150,
                     child: Text(
                       movies[index].title.toString(),
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2,
+                      maxLines: 1,
                     ),
                   ),
                 ],
