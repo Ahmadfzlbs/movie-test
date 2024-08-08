@@ -1,7 +1,7 @@
-name: tes_kerja
+name: movie_app
 version: 1.0.0+1
 publish_to: none
-description: A new Flutter project.
+description: An Android app to book a ticket for your favorite movies.
 environment:
   sdk: '>=3.4.3 <4.0.0'
 
@@ -12,7 +12,11 @@ dependencies:
     sdk: flutter
   get: 4.6.6
   http: ^1.2.2
+<<<<<<< HEAD
   shared_preferences: ^2.3.1
+=======
+  flutter_dotenv: ^5.1.0
+>>>>>>> c5c92f6cb06e1f9bbe98e58a6e051da98f1e5c85
 
 dev_dependencies:
   flutter_lints: 4.0.0
@@ -22,4 +26,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+<<<<<<< HEAD
     - assets/images/
+=======
+   - .env
+   - assets/images/
+>>>>>>> c5c92f6cb06e1f9bbe98e58a6e051da98f1e5c85
