@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tes_kerja/constants.dart';
-import 'package:tes_kerja/infrastructure/navigation/routes.dart';
-import 'package:tes_kerja/presentation/home/components/now_playing_movies_widget.dart';
-import 'package:tes_kerja/presentation/home/components/popular_movies_widget.dart';
-
+import 'package:movie_app/constants.dart';
+import 'package:movie_app/infrastructure/navigation/routes.dart';
+import 'package:movie_app/presentation/home/components/now_playing_movies_widget.dart';
+import 'package:movie_app/presentation/home/components/popular_movies_widget.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -36,7 +36,7 @@ class HomeScreen extends GetView<HomeController> {
 
         var nowPlayingMovies = controller.nowPlaying.value!.results;
         var popularMovies = controller.popularMovie.value!.results;
-        const String imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+        String imageBaseUrl = '${dotenv.env['IMAGE_BASE_URL']}';
 
         return ListView(
           physics: const BouncingScrollPhysics(),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:tes_kerja/presentation/detail_movie/controllers/detail_movie.controller.dart';
-
+import 'package:movie_app/presentation/detail_movie/controllers/detail_movie.controller.dart';
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   var initialRoute = await Routes.initialRoute;
   Get.put(DetailMovieController());
   runApp(Main(initialRoute));

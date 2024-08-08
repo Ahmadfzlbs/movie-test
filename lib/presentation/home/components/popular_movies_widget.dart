@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tes_kerja/constants.dart';
+import 'package:movie_app/constants.dart';
 
 class PopularWidget extends StatelessWidget {
   final List<dynamic> movies;

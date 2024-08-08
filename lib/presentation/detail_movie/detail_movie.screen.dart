@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tes_kerja/constants.dart';
-import 'package:tes_kerja/presentation/detail_movie/components/similar_movies_widget.dart';
-
-import '../../infrastructure/navigation/routes.dart';
+import 'package:movie_app/constants.dart';
+import 'package:movie_app/presentation/detail_movie/components/similar_movies_widget.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'controllers/detail_movie.controller.dart';
 
 class DetailMovieScreen extends GetView<DetailMovieController> {
@@ -28,7 +27,7 @@ class DetailMovieScreen extends GetView<DetailMovieController> {
 
           var movie = controller.detailMovie.value!;
           var similarMovies = controller.similarMovie.value!.results;
-          var imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+          var imageBaseUrl = '${dotenv.env['IMAGE_BASE_URL']}';
 
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
